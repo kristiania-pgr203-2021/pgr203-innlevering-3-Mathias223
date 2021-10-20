@@ -1,13 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.kristiania.http</groupId>
-    <artifactId>http-server</artifactId>
+    <artifactId>productDb</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.21.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
