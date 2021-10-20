@@ -1,5 +1,6 @@
 package no.kristiania.db;
 
+import org.flywaydb.core.Flyway;
 import org.postgresql.ds.PGSimpleDataSource;
 
 import javax.sql.DataSource;
@@ -17,6 +18,9 @@ public class ProductDao {
         dataSource.setUrl("jdbc:postgresql://localhost:5432/product_db");
         dataSource.setUser("product_dbuser");
         dataSource.setPassword("3G528kHKxL");
+
+        Flyway flyway = Flyway.configure().dataSource(dataSource).load();
+        flyway.migrate();
 
         return dataSource;
     }
