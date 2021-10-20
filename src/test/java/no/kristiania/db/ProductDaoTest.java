@@ -21,15 +21,40 @@ public class ProductDaoTest {
                 .isEqualTo(product);
     }
 
+    @Test
+    void shouldListProductByCategory() throws SQLException {
+        Category matchingCategory = randomCategory();
+        matchingCategory.setCategoryName("");
+        dao.save(matchingCategory);
+        Category anotherMatchingCategory = randomCategory();
+        anotherMatchingCategory.setCategoryName(matchingCategory.getCategoryName());
+        dao.save(anotherMatchingCategory);
+
+        Category nonMatchingCategory = randomCategory();
+        dao.save(nonMatchingCategory);
+
+
+        assertThat(dao.listByCategoryName(matchingCategory.getCategoryName()))
+                .extracting(Category::getId)
+                .contains(matchingCategory.getId(), anotherMatchingCategory.getId())
+                .doesNotContain(nonMatchingCategory.getId());
+    }
+
     private Product randomProduct() {
         Product product = new Product();
-        product.setProductName(pickOne("Lego", "Cards", "Musilini", "Candy"));
+        product.setProductName(pickOne("Lego", "Cards", "Musilini", "Jawbreaker"));
         return product;
+    }
+
+    //Uncertain if this method is needed
+    private Category randomCategory() {
+        Category category = new Category();
+        category.setCategoryName(pickOne("Toys", "Pasta", "Sweets"));
+        return category;
     }
 
     private String pickOne(String ... alternatives) {
         return alternatives[new Random().nextInt(alternatives.length)];
     }
-
 
 }
