@@ -1,5 +1,7 @@
 package no.kristiania.db;
 
+import org.postgresql.ds.PGSimpleDataSource;
+
 import javax.sql.DataSource;
 import java.sql.*;
 
@@ -11,6 +13,12 @@ public class ProductDao {
     }
 
     public static DataSource createDataSource() {
+        PGSimpleDataSource dataSource = new PGSimpleDataSource();
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/product_db");
+        dataSource.setUser("product_dbuser");
+        dataSource.setPassword("3G528kHKxL");
+
+        return dataSource;
     }
 
 
@@ -39,12 +47,17 @@ public class ProductDao {
                 preparedStatement.setLong(1, id);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     resultSet.next();
-                    return mapFromResultSet(resultSet);
+                    return productFromRs(resultSet);
                 }
             }
         }
     }
-    public Long retrieve(long id) {
-        return null;
+
+    private Product productFromRs (ResultSet resultSet) throws SQLException {
+        Product product = new Product();
+        product.setId(resultSet.getLong("id"));
+        product.setProductName(resultSet.getString("product_name"));
+        return product;
     }
+
 }

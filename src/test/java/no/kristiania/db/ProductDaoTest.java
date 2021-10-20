@@ -17,10 +17,8 @@ public class ProductDaoTest {
         dao.save(product);
 
         assertThat(dao.retrieve(product.getId()))
-                .hasNoNullFieldsOrProperties()
                 .usingRecursiveComparison()
                 .isEqualTo(product);
-
     }
 
     private Product randomProduct() {
