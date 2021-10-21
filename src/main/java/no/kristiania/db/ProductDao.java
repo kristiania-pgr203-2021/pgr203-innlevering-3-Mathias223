@@ -5,34 +5,25 @@ import org.postgresql.ds.PGSimpleDataSource;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductDao {
-    private DataSource  dataSource;
-    
-    public ProductDao(DataSource dataSource){
+    private final DataSource dataSource;
+
+    public ProductDao(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-
-    public static DataSource createDataSource() {
-        PGSimpleDataSource dataSource = new PGSimpleDataSource();
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/product_db");
-        dataSource.setUser("product_dbuser");
-        dataSource.setPassword("3G528kHKxL");
-
-        Flyway flyway = Flyway.configure().dataSource(dataSource).load();
-        flyway.migrate();
-
-        return dataSource;
-    }
-
 
     public void save(Product product) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(
-                    "insert into product (product_name) values (?)", Statement.RETURN_GENERATED_KEYS))
-            {
-                preparedStatement.setString(1,product.getProductName());
+                    "insert into product (product_name, product_info ) values (?, ?)",
+                            Statement.RETURN_GENERATED_KEYS
+            )) {
+                preparedStatement.setString(1, product.getProductName());
+                preparedStatement.setString(2, product.getProductInfo());
 
                 preparedStatement.executeUpdate();
 
@@ -57,14 +48,26 @@ public class ProductDao {
         }
     }
 
-    private Product productFromRs (ResultSet resultSet) throws SQLException {
+    public List<Product> listAll() throws SQLException {
+        try (Connection connection = dataSource.getConnection()) {
+            try (PreparedStatement statement = connection.prepareStatement("select * from product")) {
+                try (ResultSet rs = statement.executeQuery()) {
+                    ArrayList<Product> result = new ArrayList<>();
+                    while (rs.next()) {
+                        result.add(productFromRs(rs));
+                    }
+                    return result;
+                }
+            }
+        }
+    }
+
+    private Product productFromRs(ResultSet resultSet) throws SQLException {
         Product product = new Product();
         product.setId(resultSet.getLong("id"));
         product.setProductName(resultSet.getString("product_name"));
+        product.setProductInfo(resultSet.getString("product_info"));
         return product;
     }
 
-    public boolean listByCategoryName(String categoryName) {
-        return categoryName;
-    }
 }
