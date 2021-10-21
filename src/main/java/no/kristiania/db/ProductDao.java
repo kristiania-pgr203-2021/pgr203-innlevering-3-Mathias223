@@ -64,4 +64,7 @@ public class ProductDao {
         return product;
     }
 
+    public boolean listByCategoryName(String categoryName) {
+        return categoryName;
+    }
 }
