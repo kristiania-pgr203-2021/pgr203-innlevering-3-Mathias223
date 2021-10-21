@@ -8,7 +8,7 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ProductDaoTest {
-    ProductDao dao = new ProductDao(ProductDao.createDataSource());
+    ProductDao dao = new ProductDao(MakeData.createDataSource());
 
     @Test
     void shouldRetrieveSavedProduct() throws SQLException {

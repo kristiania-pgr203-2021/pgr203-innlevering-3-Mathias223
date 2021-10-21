@@ -10,8 +10,6 @@ public class ProductDao {
         this.dataSource = dataSource;
     }
 
-    public static DataSource createDataSource() {
-    }
 
 
     public void save(Product product) throws SQLException {
@@ -44,7 +42,16 @@ public class ProductDao {
             }
         }
     }
-    public Long retrieve(long id) {
+    public Long retrieve(Long id) {
         return null;
+    }
+
+
+    private Product mapFromResultSet(ResultSet rs) throws SQLException {
+        Product product = new Product();
+        product.setId(rs.getLong("id"));
+        product.setProductName(rs.getString("Product_name"));
+        product.setProductInfo(rs.getString("product_info"));
+        return product;
     }
 }
