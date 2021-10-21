@@ -1,5 +1,8 @@
 package no.kristiania.db;
 
+import org.flywaydb.core.Flyway;
+import org.postgresql.ds.PGSimpleDataSource;
+
 import javax.sql.DataSource;
 import java.sql.*;
 
@@ -10,6 +13,17 @@ public class ProductDao {
         this.dataSource = dataSource;
     }
 
+    public static DataSource createDataSource() {
+        PGSimpleDataSource dataSource = new PGSimpleDataSource();
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/product_db");
+        dataSource.setUser("product_dbuser");
+        dataSource.setPassword("3G528kHKxL");
+
+        Flyway flyway = Flyway.configure().dataSource(dataSource).load();
+        flyway.migrate();
+
+        return dataSource;
+    }
 
 
     public void save(Product product) throws SQLException {
@@ -37,21 +51,17 @@ public class ProductDao {
                 preparedStatement.setLong(1, id);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     resultSet.next();
-                    return mapFromResultSet(resultSet);
+                    return productFromRs(resultSet);
                 }
             }
         }
     }
-    public Long retrieve(Long id) {
-        return null;
-    }
 
-
-    private Product mapFromResultSet(ResultSet rs) throws SQLException {
+    private Product productFromRs (ResultSet resultSet) throws SQLException {
         Product product = new Product();
-        product.setId(rs.getLong("id"));
-        product.setProductName(rs.getString("Product_name"));
-        product.setProductInfo(rs.getString("product_info"));
+        product.setId(resultSet.getLong("id"));
+        product.setProductName(resultSet.getString("product_name"));
         return product;
     }
+
 }
