@@ -2,7 +2,7 @@ package no.kristiania.db;
 
 public class Category {
     private String categoryName;
-    private Long id;
+    private long id;
 
     public String getCategoryName() {
         return categoryName;
@@ -12,7 +12,7 @@ public class Category {
         this.categoryName = categoryName;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

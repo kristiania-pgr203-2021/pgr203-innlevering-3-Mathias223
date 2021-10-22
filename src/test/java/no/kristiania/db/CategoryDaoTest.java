@@ -15,6 +15,11 @@ public class CategoryDaoTest {
     public CategoryDaoTest() throws IOException {
     }
 
+    @Test
+    void shouldListProductAndCategory(){
+
+    }
+
 /*
     @Test
     void shouldListProductByCategory() throws SQLException {
@@ -37,9 +42,9 @@ public class CategoryDaoTest {
 
 
    @Test
-    void shouldListSavedRoles() throws SQLException {
-        String category1  = "role-" + UUID.randomUUID();
-        String category2 = "role-" + UUID.randomUUID();
+    void shouldListSavedCategory() throws SQLException {
+        String category1  = "category-" + UUID.randomUUID();
+        String category2 = "category-" + UUID.randomUUID();
 
         dao.save(category1);
         dao.save(category2);
