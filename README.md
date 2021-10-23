@@ -1,3 +1,5 @@
+[![JDBC & DAO test with Maven](https://github.com/kristiania-pgr203-2021/pgr203-innlevering-3-Mathias223/actions/workflows/maven.yml/badge.svg)](https://github.com/kristiania-pgr203-2021/pgr203-innlevering-3-Mathias223/actions/workflows/maven.yml)
+
 # Innlevering 3: JDBC
 
 ## Oppgave
