@@ -15,11 +15,6 @@ public class CategoryDaoTest {
     public CategoryDaoTest() throws IOException {
     }
 
-    @Test
-    void shouldListProductAndCategory(){
-        /*might no be needed*/
-    }
-
 
    @Test
     void shouldListSavedCategory() throws SQLException {
