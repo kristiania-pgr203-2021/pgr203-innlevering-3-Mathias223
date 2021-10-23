@@ -16,9 +16,9 @@ public class CategoryDaoTest {
     }
 
 
-   @Test
+    @Test
     void shouldListSavedCategory() throws SQLException {
-        String category1  = "category-" + UUID.randomUUID();
+        String category1 = "category-" + UUID.randomUUID();
         String category2 = "category-" + UUID.randomUUID();
 
         dao.save(category1);

@@ -10,7 +10,7 @@ import java.util.Properties;
 import java.util.Random;
 
 public class MakeData {
-    public static DataSource createDataSource() throws IOException{
+    public static DataSource createDataSource() throws IOException {
 
         // Flyway
 
@@ -29,7 +29,7 @@ public class MakeData {
         JdbcDataSource dataSource = new JdbcDataSource();
         dataSource.setUrl("jdbc:h2:mem:product_db;DB_CLOSE_DELAY=-1");
         Flyway.configure().dataSource(dataSource).load().migrate();
-        return dataSource ;
+        return dataSource;
 
 
         // config.properties
@@ -54,11 +54,11 @@ public class MakeData {
 
     }
 
-    public static String pickOne(String ... alternatives) {
+    public static String pickOne(String... alternatives) {
         return alternatives[new Random().nextInt(alternatives.length)];
     }
 
-    public static long pickOneInt(long... alternatives){
+    public static long pickOneInt(long... alternatives) {
         return alternatives[new Random().nextInt(alternatives.length)];
     }
 }

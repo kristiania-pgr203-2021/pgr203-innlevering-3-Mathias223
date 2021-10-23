@@ -17,7 +17,7 @@ public class ProductDao {
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(
                     "insert into product (product_name, product_info, price, category_id ) values (?, ?, ?, ?)",
-                            Statement.RETURN_GENERATED_KEYS
+                    Statement.RETURN_GENERATED_KEYS
             )) {
                 preparedStatement.setString(1, product.getProductName());
                 preparedStatement.setString(2, product.getProductInfo());
@@ -69,7 +69,7 @@ public class ProductDao {
                 preparedStatement.setLong(1, categoryId);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     ArrayList<Product> products = new ArrayList<>();
-                    while (resultSet.next()){
+                    while (resultSet.next()) {
                         products.add(productFromRs(resultSet));
                     }
                     return products;

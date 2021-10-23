@@ -8,7 +8,6 @@ public class Product {
     private long categoryId;
 
 
-
     public long getCategoryId() {
         return categoryId;
     }
@@ -48,7 +47,6 @@ public class Product {
     public void setId(long id) {
         this.id = id;
     }
-
 
 
 }

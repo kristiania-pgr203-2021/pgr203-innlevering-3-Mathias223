@@ -4,7 +4,6 @@ package no.kristiania.db;
 import org.junit.jupiter.api.Test;
 
 
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Random;

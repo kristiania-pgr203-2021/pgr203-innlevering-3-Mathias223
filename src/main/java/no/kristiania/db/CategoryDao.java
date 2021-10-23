@@ -12,12 +12,12 @@ public class CategoryDao {
 
     private final DataSource dataSource;
 
-    public CategoryDao(DataSource dataSource){
-        this.dataSource =dataSource;
+    public CategoryDao(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     public void save(String categoryName) throws SQLException {
-        try(Connection connection = dataSource.getConnection()){
+        try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(
                     "insert into category (category_name) values (?)"
             )) {
