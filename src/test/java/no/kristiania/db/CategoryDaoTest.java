@@ -17,28 +17,8 @@ public class CategoryDaoTest {
 
     @Test
     void shouldListProductAndCategory(){
-
+        /*might no be needed*/
     }
-
-/*
-    @Test
-    void shouldListProductByCategory() throws SQLException {
-        Category matchingCategory = MakeData.pickOne("deg", "pd", "hei");
-        matchingCategory.setCategoryName("");
-        dao.save(matchingCategory);
-        Category anotherMatchingCategory = randomCategory();
-        anotherMatchingCategory.setCategoryName(matchingCategory.getCategoryName());
-        dao.save(anotherMatchingCategory);
-
-        Category nonMatchingCategory = randomCategory();
-        dao.save(nonMatchingCategory);
-
-
-        assertThat(dao.listByCategoryName(matchingCategory.getCategoryName()))
-                .extracting(Category::getId)
-                .contains(matchingCategory.getId(), anotherMatchingCategory.getId())
-                .doesNotContain(nonMatchingCategory.getId());
-    }*/
 
 
    @Test

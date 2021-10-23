@@ -14,7 +14,7 @@ public class MakeData {
 
         // Flyway
 
-       /* PGSimpleDataSource dataSource = new PGSimpleDataSource();
+     /*  PGSimpleDataSource dataSource = new PGSimpleDataSource();
         dataSource.setUrl("jdbc:postgresql://localhost:5432/product_db");
         dataSource.setUser("product_dbuser");
         dataSource.setPassword("3G528kHKxL");

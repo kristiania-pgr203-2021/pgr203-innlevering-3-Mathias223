@@ -29,15 +29,15 @@ Det anbefales at dere benytter (remote) pair programming for innlevering 3 og jo
   * [ ] Valgfritt: Dere har en Git branch som viser parprogrammering der dere sjekker inn annenhver gang
   * [ ] Valgfritt: Dere har mottatt code review fra medstudenter
   * [x] `.idea`, `*.iml` og `target` er lagt til i .gitignore og ikke sjekket inn
-  * [ ] Github Actions rapporterer at 100% av testene kjører grønt
-  * [ ] GitHub Actions skal ha `timeout` på bygget
-  * [ ] Github Actions bruker Java 11
-  * [ ] README viser GitHub Actions status badge
+  * [x] Github Actions rapporterer at 100% av testene kjører grønt
+  * [x] GitHub Actions skal ha `timeout` på bygget
+  * [x] Github Actions bruker Java 11
+  * [x] README viser GitHub Actions status badge
 * Kode
   * [x] Koden skal være korrekt strukturert etter Maven sine standarder (koden skal ligge under `src/main/java` og tester under `src/test/java`)
   * [x] Klassene skal ligge i Java packages
   * [x] Klassenavn, pakkenavn, metodenavn og variabelnavn skal følge Java-konvensjoner når det gjelder små og store bokstaver
   * [x] Koden skal være korrekt indentert
-  * [ ] Tester demonstrerer opprettelse av både produkt og produktkategori
-  * [ ] Alle feltene for produkt skal være lagret i databasen
-  * [ ] Tester demonsterer listing av produkter og kategorier
+  * [x] Tester demonstrerer opprettelse av både produkt og produktkategori
+  * [x] Alle feltene for produkt skal være lagret i databasen
+  * [x] Tester demonsterer listing av produkter og kategorier
