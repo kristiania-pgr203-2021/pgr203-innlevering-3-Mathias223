@@ -6,15 +6,30 @@ import org.postgresql.ds.PGSimpleDataSource;
 
 import javax.sql.DataSource;
 import java.io.*;
+import java.sql.SQLException;
 import java.util.Properties;
 import java.util.Random;
+import java.util.Scanner;
 
 public class MakeData {
+
+    public static void main(String[] args) throws IOException, SQLException {
+        ProductDao dao = new ProductDao(createDataSource());
+
+        System.out.println("Please enter a category id number!");
+
+        Scanner scanner = new Scanner(System.in);
+        long category_id = scanner.nextLong();
+
+        System.out.println(dao.listByCategory(category_id));
+
+    }
+
     public static DataSource createDataSource() throws IOException {
 
-        // Flyway
+        // Flyway & Postgres databse
 
-     /*  PGSimpleDataSource dataSource = new PGSimpleDataSource();
+/*        PGSimpleDataSource dataSource = new PGSimpleDataSource();
         dataSource.setUrl("jdbc:postgresql://localhost:5432/product_db");
         dataSource.setUser("product_dbuser");
         dataSource.setPassword("3G528kHKxL");
@@ -24,7 +39,7 @@ public class MakeData {
         return dataSource;*/
 
 
-        //h2
+        //h2 database
 
         JdbcDataSource dataSource = new JdbcDataSource();
         dataSource.setUrl("jdbc:h2:mem:product_db;DB_CLOSE_DELAY=-1");
