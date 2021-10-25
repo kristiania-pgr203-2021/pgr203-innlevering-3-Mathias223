@@ -63,7 +63,7 @@ public class ProductDaoTest {
     private Product randomProduct() {
         Product product = new Product();
         product.setProductName(MakeData.pickOne("Lego", "HungerGames", "Orange", "Jawbreaker"));
-        product.setProductInfo(MakeData.pickOne("Toys", "Books", "Food", "Candy"));
+        product.setProductInfo(MakeData.pickOne("For all ages", "Family friendly", "Most requested", "Popular"));
         product.setPrice((int) MakeData.pickOneInt(350, 250, 600, 50));
         product.setCategoryId(MakeData.pickOneInt(1L, 2L, 3L, 4L));
         return product;

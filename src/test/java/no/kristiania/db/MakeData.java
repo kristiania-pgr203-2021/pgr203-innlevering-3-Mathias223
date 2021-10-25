@@ -29,22 +29,22 @@ public class MakeData {
 
         // Flyway & Postgres databse
 
-/*        PGSimpleDataSource dataSource = new PGSimpleDataSource();
+        PGSimpleDataSource dataSource = new PGSimpleDataSource();
         dataSource.setUrl("jdbc:postgresql://localhost:5432/product_db");
         dataSource.setUser("product_dbuser");
         dataSource.setPassword("3G528kHKxL");
 
         Flyway flyway = Flyway.configure().dataSource(dataSource).load();
         flyway.migrate();
-        return dataSource;*/
+        return dataSource;
 
 
         //h2 database
 
-        JdbcDataSource dataSource = new JdbcDataSource();
+        /*JdbcDataSource dataSource = new JdbcDataSource();
         dataSource.setUrl("jdbc:h2:mem:product_db;DB_CLOSE_DELAY=-1");
         Flyway.configure().dataSource(dataSource).load().migrate();
-        return dataSource;
+        return dataSource;*/
 
 
         // config.properties

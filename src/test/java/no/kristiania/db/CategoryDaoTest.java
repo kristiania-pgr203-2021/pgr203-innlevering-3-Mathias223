@@ -15,17 +15,35 @@ public class CategoryDaoTest {
     public CategoryDaoTest() throws IOException {
     }
 
+    @Test
+    void shouldRetrieveSavedProduct() throws SQLException {
+
+        Category category = randomCategory();
+        dao.save(category);
+
+        assertThat(dao.retrieve(category.getId()))
+                .usingRecursiveComparison()
+                .isEqualTo(category);
+    }
+
+
 
     @Test
     void shouldListSavedCategory() throws SQLException {
-        String category1 = "category-" + UUID.randomUUID();
-        String category2 = "category-" + UUID.randomUUID();
+        Category category1 = randomCategory();
+        Category category2 = randomCategory();
 
         dao.save(category1);
         dao.save(category2);
 
         assertThat(dao.listAll())
                 .contains(category1, category2);
+    }
+
+    private Category randomCategory() {
+        Category category = new Category();
+        category.setCategoryName(MakeData.pickOne("Toys", "Books", "Food", "Candy"));
+        return category;
     }
 
 }
