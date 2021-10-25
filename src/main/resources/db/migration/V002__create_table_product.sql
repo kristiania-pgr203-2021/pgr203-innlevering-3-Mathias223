@@ -4,5 +4,5 @@ create table PRODUCT
     product_name varchar(100) NOT NULL,
     product_info varchar(100) NOT NULL,
     price        int NOT NULL,
-    category_id  int references category(id)
+    category_id  int
 );

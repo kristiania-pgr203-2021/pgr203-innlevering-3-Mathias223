@@ -1,11 +1,9 @@
 package no.kristiania.db;
 
 import org.junit.jupiter.api.Test;
-
-
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.UUID;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,7 +27,7 @@ public class CategoryDaoTest {
 
 
     @Test
-    void shouldListSavedCategory() throws SQLException {
+    void shouldListAllCategories() throws SQLException {
         Category category1 = randomCategory();
         Category category2 = randomCategory();
 
@@ -37,7 +35,8 @@ public class CategoryDaoTest {
         dao.save(category2);
 
         assertThat(dao.listAll())
-                .contains(category1, category2);
+                .extracting(Category::getId)
+                .contains(category1.getId(), category2.getId());
     }
 
     private Category randomCategory() {
@@ -45,6 +44,5 @@ public class CategoryDaoTest {
         category.setCategoryName(MakeData.pickOne("Toys", "Books", "Food", "Candy"));
         return category;
     }
-
 }
 

@@ -2,11 +2,8 @@ package no.kristiania.db;
 
 
 import org.junit.jupiter.api.Test;
-
-
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Random;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,7 +41,7 @@ public class ProductDaoTest {
     @Test
     void shouldListProductByCategory() throws SQLException {
         Product matchingProduct = randomProduct();
-        matchingProduct.setCategoryId(5L);
+        matchingProduct.setCategoryId(4L);
         dao.save(matchingProduct);
         Product anotherMatchingProduct = randomProduct();
         anotherMatchingProduct.setCategoryId(matchingProduct.getCategoryId());
@@ -68,5 +65,4 @@ public class ProductDaoTest {
         product.setCategoryId(MakeData.pickOneInt(1L, 2L, 3L, 4L));
         return product;
     }
-
 }
