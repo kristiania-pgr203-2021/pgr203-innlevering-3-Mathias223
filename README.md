@@ -22,7 +22,7 @@ Det anbefales at dere benytter (remote) pair programming for innlevering 3 og jo
 ## Krav til innlevering
 
 * Innlevering
-  * [ ] Begge har levert link til Github Repository i Canvas
+  * [x] Begge har levert link til Github Repository i Canvas
   * [x] Koden er sjekket inn på et repository på https://github.com/kristiania-pgr203-2021
   * [x] GitHub repository er private. Dere skal gi tilgang til de som gir code review
 * Github
